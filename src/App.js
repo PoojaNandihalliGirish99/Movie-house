@@ -15,18 +15,18 @@ function App() {
   const [ movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [favourites, setFavourites] = useState([]);
-  
 
     useEffect(()=>{
       getMovies(FEATURED_API);
     },[]);
 
     useEffect(()=>{
-      return () => {
+      
       const movieFavourites = JSON.parse(localStorage.getItem('react-movie-app-favourites'));
-
+      if (movieFavourites != null) {
       setFavourites(movieFavourites);
-    }
+      }
+    
     },[]);
 
     const saveToLocalStorage = (items) => {
@@ -57,12 +57,10 @@ function App() {
     }
 
     const addFavMovie = (movie) => {
-      const newFavList = favourites.filter(
-        (favourite) => (favourite.id !== movie.id)        
-      );
-
+      const newFavList = [...favourites, movie]
       setFavourites(newFavList);
       saveToLocalStorage(newFavList);
+
     }
 
     const removeFavMovie = (movie) => {
@@ -100,9 +98,11 @@ function App() {
       
     </div>
 
-
+    {favourites.length > 0 &&
+      <h3 style={{backgroundColor:"#33242a", padding:"1rem", textAlign:"center"}}>YOUR FAVOURITES</h3>
+    }
     <div>
-    <h3 style={{backgroundColor:"#33242a", padding:"1rem", textAlign:"center"}}>YOUR FAVOURITES</h3>
+
     <Movie 
     key={movies.id}
     movies = {favourites}

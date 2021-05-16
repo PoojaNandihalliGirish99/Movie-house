@@ -51,14 +51,23 @@ header{
   
 }
 .movie{
+
   background-color: #33242a;
-  margin: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   width: 300px;
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
+  transition: transform 0.2s;
+}
 
+.movie:hover {
+	cursor: pointer;
+	transform: scale(0.9);
 }
 
  .movie img{

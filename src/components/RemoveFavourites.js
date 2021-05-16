@@ -4,7 +4,8 @@ const RemoveFavourites = () => {
     return(
         
         <span
-        className='material-icons-outlined'>star_outline</span>
+        className='material-icons-outlined'
+        >star_outline</span>
 
     )
 }
